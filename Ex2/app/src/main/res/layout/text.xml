@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="25dp"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff3fd5ff">
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eContact" android:hint="Type emergency contact"
+        android:textColorHint="#c4fdfff8"
+
+        android:textIsSelectable="false"
+        android:textColor="#93fffef6" />
+
+    <Button
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:id="@+id/button3"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Null"
+        android:id="@+id/tvResults"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#c4fdfff8" />
+
+
+</LinearLayout>
