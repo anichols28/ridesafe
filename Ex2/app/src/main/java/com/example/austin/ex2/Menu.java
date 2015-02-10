@@ -12,7 +12,7 @@ import android.widget.ListView;
  */
 public class Menu extends ListActivity{
 
-    String classes [] = {"MainActivity", "Contact", "Activate Accelerometer", "SendSMS",};
+    String classes [] = {"MainActivity", "ContactSec", "Activate Accelerometer", "SendSMS",};
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         String cheese = classes[position];

@@ -9,23 +9,9 @@
         android:text="To Phone:"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        />
-    <EditText
-        android:id="@+id/phoneTextField"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        />
-    <TextView
-        android:text="Message"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        />
+        android:id="@+id/tvNumber"
+        android:linksClickable="true" />
 
-    <EditText
-        android:id="@+id/msgTextField"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        />
     <Button
         android:text="Send"
         android:id="@+id/sendButton"

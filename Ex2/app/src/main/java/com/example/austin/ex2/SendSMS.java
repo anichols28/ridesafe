@@ -12,6 +12,7 @@ import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SendSMS extends Activity {
@@ -30,21 +31,27 @@ public class SendSMS extends Activity {
         setContentView(R.layout.sms);
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         // make message text field object
-        msgTextField = (EditText) findViewById(R.id.msgTextField);
+        //msgTextField = (EditText) findViewById(R.id.msgTextField);
         // make send button object
         sendButton = (Button) findViewById(R.id.sendButton);
         // make phone number field object
         phoneTextField = (EditText) findViewById(R.id.eContact);
 
+       TextView name = (TextView)findViewById(R.id.tvNumber);
+       name.setText(settings.getString("eContact", ""));
+
     }
+
 
     // this is the function that gets called when you click the button
     public void send(View v)
     {
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         // get the phone number from the phone number text field
-        String phoneNumber = phoneTextField.getText().toString();
+        String phoneNumber = settings.getString("eContact", "");
         // get the message from the message text box
-        String msg = msgTextField.getText().toString();
+        String msg = "Calibrations";
 
         // make sure the fields are not empty
         if (phoneNumber.length()>0 && msg.length()>0)
