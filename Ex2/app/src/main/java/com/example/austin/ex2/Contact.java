@@ -39,7 +39,7 @@ public class Contact extends Activity {
                 editor.putString("eContact", mEdit.getText().toString());
                 editor.commit();
 
-                Intent intent = new Intent(getApplicationContext(), SendSMS.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });

@@ -8,6 +8,7 @@ android {
         applicationId "com.example.austin.ex2"
         minSdkVersion 8
         targetSdkVersion 21
+
         versionCode 1
         versionName "1.0"
     }

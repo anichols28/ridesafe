@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
+        <uses-permission android:name="android.permission.VIBRATE" />
         <activity
             android:name=".Splash"
             android:label="@string/app_name" >
@@ -26,6 +26,17 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.example.austin.ex2.Accelerometer"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.ACCELEROMETER" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Menu"
             android:label="@string/app_name" >
             <intent-filter>
@@ -36,15 +47,6 @@
         </activity>
         <activity
             android:name=".Contact"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="com.example.austin.ex2.CONTACT" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ContactSec"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="com.example.austin.ex2.CONTACT" />
