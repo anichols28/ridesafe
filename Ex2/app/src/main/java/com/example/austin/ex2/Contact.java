@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.InputType;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +37,7 @@ public class Contact extends Activity {
                 editor.putString("eContact", mEdit.getText().toString());
                 editor.commit();
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), GForce.class);
                 startActivity(intent);
             }
         });
