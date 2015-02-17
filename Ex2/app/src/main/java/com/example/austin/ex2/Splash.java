@@ -20,11 +20,11 @@ public class Splash extends Activity {
 
            public void run (){
                try{
-                    sleep(5000);
+                    sleep(2876);
                } catch (InterruptedException e){
                     e.printStackTrace();
                }finally{
-                    Intent openStartingPoint = new Intent("com.example.austin.ex2.MENU");
+                    Intent openStartingPoint = new Intent("com.example.austin.ex2.CONTACT");
                     startActivity(openStartingPoint);
                }
            }

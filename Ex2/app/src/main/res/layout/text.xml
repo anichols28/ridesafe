@@ -3,32 +3,41 @@
     android:padding="25dp"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff3fd5ff">
+    android:background="#14b4ff">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter an emergency contact's phone number below: "
+        android:layout_gravity="center_horizontal"
+        android:textColor="#c4fdfff8"
+        android:textSize="25dp" />
     <EditText
-        android:layout_width="fill_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:id="@+id/eContact" android:hint="Type emergency contact"
         android:textColorHint="#c4fdfff8"
 
         android:textIsSelectable="false"
-        android:textColor="#93fffef6" />
+        android:textColor="#ff000000"
+        android:background="#fffafffb" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/tvResults"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#c4fdfff8" />
 
     <Button
         android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Submit"
         android:id="@+id/button3"
-        android:layout_gravity="center_horizontal" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Null"
-        android:id="@+id/tvResults"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#c4fdfff8" />
+        android:background="#cac5c5c5" />
 
 
 </LinearLayout>
