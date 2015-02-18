@@ -107,6 +107,8 @@ public class GForce extends Activity implements SensorEventListener {
         deltaY = Math.abs(lastY - event.values[1]);
         deltaZ = Math.abs(lastZ - event.values[2]);
 
+
+
         // if the change is below 2, it is just plain noise
         if (deltaX < 2)
             deltaX = 0;
@@ -114,6 +116,7 @@ public class GForce extends Activity implements SensorEventListener {
             deltaY = 0;
         if (deltaZ < 2)
             deltaZ = 0;
+
 
         // set the last know values of x,y,z
         lastX = event.values[0];
@@ -127,6 +130,8 @@ public class GForce extends Activity implements SensorEventListener {
         currentX.setText("0.0");
         currentY.setText("0.0");
         currentZ.setText("0.0");
+        currentG.setText("0.0");
+
     }
 
     // display the current x,y,z accelerometer values
@@ -160,8 +165,9 @@ public class GForce extends Activity implements SensorEventListener {
         if (cG > GMax) {
             GMax = cG;
             maxG.setText(Double.toString(GMax));
-            if(GMax >=2.5){
+            if(GMax >=3){
                 SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+
                 send(settings.getString("eContact", ""));
             }
         }
@@ -179,6 +185,11 @@ public class GForce extends Activity implements SensorEventListener {
         String phoneNumber = Number;
         // get the message from the message text box
         String msg = "test";
+        GPS myGPS = new GPS(this);
+        myGPS.getLocation();
+        myGPS.closeGPS();
+        String address = myGPS.getLocationAddress();
+
 
         // make sure the fields are not empty
         if (phoneNumber.length()>0 && msg.length()>0)
@@ -188,7 +199,7 @@ public class GForce extends Activity implements SensorEventListener {
                     new Intent(this, GForce.class), 0);
             SmsManager sms = SmsManager.getDefault();
             // this is the function that does all the magic
-            sms.sendTextMessage(phoneNumber, null, msg, pi, null);
+            sms.sendTextMessage(phoneNumber, null, address, pi, null);
         }
         else
         {

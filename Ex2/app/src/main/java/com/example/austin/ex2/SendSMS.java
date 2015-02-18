@@ -21,30 +21,17 @@ public class SendSMS extends Activity {
     EditText msgTextField;
 
 
-    /** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        // load the layout
-        setContentView(R.layout.sms);
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        // make message text field object
-        msgTextField = (EditText) findViewById(R.id.msgTextField);
-        // make send button object
-        sendButton = (Button) findViewById(R.id.sendButton);
-        // make phone number field object
-        phoneTextField = (EditText) findViewById(R.id.eContact);
-
-    }
-
     // this is the function that gets called when you click the button
-    public void send(String number, String message)
+    public void send(String Number)
     {
         // get the phone number from the phone number text field
-        String phoneNumber = phoneTextField.getText().toString();
+        String phoneNumber = Number;
         // get the message from the message text box
-        String msg = msgTextField.getText().toString();
+        String msg = "test";
+        GPS myGPS = new GPS(this);
+        myGPS.getLocation();
+        String address = myGPS.getLocationAddress();
+        myGPS.closeGPS();
 
         // make sure the fields are not empty
         if (phoneNumber.length()>0 && msg.length()>0)
@@ -54,12 +41,12 @@ public class SendSMS extends Activity {
                     new Intent(this, SendSMS.class), 0);
             SmsManager sms = SmsManager.getDefault();
             // this is the function that does all the magic
-            sms.sendTextMessage(phoneNumber, null, msg, pi, null);
+            sms.sendTextMessage(phoneNumber, null, address, pi, null);
         }
         else
         {
             // display message if text fields are empty
-            Toast.makeText(getBaseContext(),"All field are required",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "All field are required", Toast.LENGTH_SHORT).show();
         }
 
 
