@@ -38,9 +38,9 @@ public class GPS extends Service implements LocationListener {
     double mLongitude;
 
     // Minimum time fluctuation for next update (in milliseconds)
-    private static final long TIME = 30000;
+    private static final long TIME = 50000;
     // Minimum distance fluctuation for next update (in meters)
-    private static final long DISTANCE = 20;
+    private static final long DISTANCE = 1;
 
     // Declaring a Location Manager
     protected LocationManager mLocationManager;

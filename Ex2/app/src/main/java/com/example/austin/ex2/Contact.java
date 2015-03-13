@@ -15,8 +15,8 @@ import android.widget.TextView;
 public class Contact extends Activity {
     public static final String PREFS_NAME = "MyPreferencesFile";
     Button mButton;
-    EditText mEdit;
-    TextView mText;
+    EditText mEdit,mEdit2, mEdit3;
+    TextView mText,mText2,mText3;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,11 +30,15 @@ public class Contact extends Activity {
                 //mEdit   = (EditText)findViewById(R.id.eContact);
 
                 mEdit = (EditText)findViewById(R.id.eContact);
+                mEdit2 = (EditText)findViewById(R.id.eMessage);
+                mEdit3 = (EditText)findViewById(R.id.eTimer);
                 mText = (TextView)findViewById(R.id.tvResults);
                 mText.setText("Emergency Contact: "+mEdit.getText().toString());
                 SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putString("eContact", mEdit.getText().toString());
+                editor.putString("eMessage", mEdit2.getText().toString());
+                editor.putString("eTimer", mEdit3.getText().toString());
                 editor.commit();
 
                 Intent intent = new Intent(getApplicationContext(), GForce.class);

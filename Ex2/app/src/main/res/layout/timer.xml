@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#14b4ff">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#d1fffff9"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:textSize="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="IMPACT DECTED"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="45dp"
+        android:textColor="#ffffffff"
+        android:contentDescription="impact detected" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="False Alarm"
+        android:id="@+id/falseButton"
+        android:layout_marginTop="52dp"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send help"
+        android:id="@+id/helpButton"
+        android:layout_marginTop="76dp"
+        android:layout_below="@+id/falseButton"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

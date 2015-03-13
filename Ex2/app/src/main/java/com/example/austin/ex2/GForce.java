@@ -18,6 +18,8 @@ import android.telephony.SmsManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 public class GForce extends Activity implements SensorEventListener {
 
     private float lastX, lastY, lastZ;
@@ -39,7 +41,7 @@ public class GForce extends Activity implements SensorEventListener {
     public static final String PREFS_NAME = "MyPreferencesFile";
     private TextView currentX, currentY, currentZ, currentG, maxG,maxX, maxY, maxZ;
 
-    public Vibrator v;
+   // public Vibrator v;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,7 @@ public class GForce extends Activity implements SensorEventListener {
         }
 
         //initialize vibration
-        v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+       // v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 
     }
 
@@ -123,7 +125,7 @@ public class GForce extends Activity implements SensorEventListener {
         lastY = event.values[1];
         lastZ = event.values[2];
 
-        vibrate();
+       // vibrate();
     }
 
     public void displayCleanValues() {
@@ -168,45 +170,25 @@ public class GForce extends Activity implements SensorEventListener {
             if(GMax >=3){
                 SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 
-                send(settings.getString("eContact", ""));
+                //send(settings.getString("eContact", ""));
+                
+                Intent intent = new Intent(this, Timer.class);
+                startActivity(intent);
+
             }
         }
     }
 
-    public void vibrate() {
-        if ((deltaX > vibrateThreshold) || (deltaY > vibrateThreshold) || (deltaZ > vibrateThreshold)) {
-            v.vibrate(50);
-        }
-    }
-
-    public void send(String Number)
-    {
-        // get the phone number from the phone number text field
-        String phoneNumber = Number;
-        // get the message from the message text box
-        String msg = "test";
-        GPS myGPS = new GPS(this);
-        myGPS.getLocation();
-        myGPS.closeGPS();
-        String address = myGPS.getLocationAddress();
+   // public void vibrate() {
+        //if ((deltaX > vibrateThreshold) || (deltaY > vibrateThreshold) || (deltaZ > vibrateThreshold)) {
+         //   v.vibrate(50);
+     //   }
+    //}
 
 
-        // make sure the fields are not empty
-        if (phoneNumber.length()>0 && msg.length()>0)
-        {
-            // call the sms manager
-            PendingIntent pi = PendingIntent.getActivity(this, 0,
-                    new Intent(this, GForce.class), 0);
-            SmsManager sms = SmsManager.getDefault();
-            // this is the function that does all the magic
-            sms.sendTextMessage(phoneNumber, null, address, pi, null);
-        }
-        else
-        {
-            // display message if text fields are empty
-            Toast.makeText(getBaseContext(), "All field are required", Toast.LENGTH_SHORT).show();
-        }
 
 
-    }
+
+
+
 }

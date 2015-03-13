@@ -39,4 +39,6 @@ public class Splash extends Activity {
         ourSong.release();
         finish();
     }
+
+
 }
