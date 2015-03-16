@@ -214,9 +214,9 @@ public class GPS extends Service implements LocationListener {
      * close GPS to save battery
      */
     public void closeGPS() {
-        if (mLocationManager != null) {
+
             mLocationManager.removeUpdates(GPS.this);
-        }
+            mLocationManager = null;
     }
 
     /**

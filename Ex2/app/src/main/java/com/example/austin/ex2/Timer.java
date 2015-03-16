@@ -44,7 +44,8 @@ public class Timer extends Activity {
         myGPS.getLocation();
         String timer = settings.getString("eTimer", "");
         int time = 0;
-        if(timer == ""){
+
+        if(!parseWithFallback(timer)){
             time = 10000;
         }
         else{
@@ -52,25 +53,9 @@ public class Timer extends Activity {
             time *= 1000;
         }
         text1=(TextView)findViewById(R.id.textView1);
-        falseButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-
-                Intent intent = new Intent(getApplicationContext(), GForce.class);
-                startActivity(intent);
-                kill_activity();
-
-            }
-        });
-        trueButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-                kill_activity();
-                send(settings.getString("eContact", ""), myGPS);
 
 
-            }
-        });
-        new CountDownTimer(time, 1000) { // adjust the milli seconds here
+        final CountDownTimer myCount = new CountDownTimer(time, 1000) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
 
@@ -87,10 +72,29 @@ public class Timer extends Activity {
                 send(settings.getString("eContact", ""), myGPS);
 
 
+
                 //
             }
         }.start();
-        myGPS.closeGPS();
+        falseButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                myCount.cancel();
+                Intent intent = new Intent(getApplicationContext(), GForce.class);
+                startActivity(intent);
+
+
+            }
+        });
+        trueButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                myCount.cancel();
+                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                send(settings.getString("eContact", ""), myGPS);
+
+
+            }
+        });
+
     }
 
     public void send(String Number, GPS myGPS)
@@ -118,6 +122,7 @@ public class Timer extends Activity {
 
 
         // make sure the fields are not empty
+        myGPS.closeGPS();
         kill_activity();
         // call the sms manager
         PendingIntent pi = PendingIntent.getActivity(this, 0,
@@ -137,6 +142,13 @@ public class Timer extends Activity {
         finish();
     }
 
-
+    public boolean parseWithFallback(String text) {
+        try {
+            Integer.parseInt(text);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 
 }
