@@ -13,8 +13,10 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.os.Vibrator;
 import android.telephony.SmsManager;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,9 +47,13 @@ public class GForce extends Activity implements SensorEventListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "My Tag");
+        wl.acquire();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accel);
         initializeViews();
+
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) != null) {
