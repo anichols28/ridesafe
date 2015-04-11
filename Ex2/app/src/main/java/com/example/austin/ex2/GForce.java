@@ -39,6 +39,7 @@ public class GForce extends Activity implements SensorEventListener {
     private float deltaZ = 0;
     private double cG = 0;
 
+
     private float vibrateThreshold = 0;
     public static final String PREFS_NAME = "MyPreferencesFile";
     private TextView currentX, currentY, currentZ, currentG, maxG,maxX, maxY, maxZ;
@@ -47,8 +48,9 @@ public class GForce extends Activity implements SensorEventListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "My Tag");
+        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "GForce");
         wl.acquire();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accel);
