@@ -30,7 +30,7 @@ public class Timer extends Activity  implements TextToSpeech.OnInitListener {
 
 
     TextView text1;
-    public static final String PREFS_NAME = "MyPreferencesFile";
+    private static final String PREFS_NAME = "MyPreferencesFile";
     Button falseButton, trueButton;
     private static final String FORMAT = "%02d:%02d:%02d";
     private TextToSpeech mTts;
@@ -45,7 +45,6 @@ public class Timer extends Activity  implements TextToSpeech.OnInitListener {
         falseButton = (Button)findViewById(R.id.falseButton);
         trueButton = (Button)findViewById(R.id.helpButton);
         mTts = new TextToSpeech(this, this);
-
         final GPS myGPS = new GPS(this);
         myGPS.getLocation();
         String timer = settings.getString("eTimer", "");
@@ -74,6 +73,7 @@ public class Timer extends Activity  implements TextToSpeech.OnInitListener {
             }
 
             public void onFinish() {
+
                 SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
                 send(settings.getString("eContact", ""), myGPS);
 
@@ -107,7 +107,6 @@ public class Timer extends Activity  implements TextToSpeech.OnInitListener {
         mTts.speak("Ride Safe has Detected an impact",
                 TextToSpeech.QUEUE_FLUSH,  // Drop all pending entries in the playback queue.
                 null);
-
     }
 
     public void send(String Number, GPS myGPS)
@@ -136,7 +135,6 @@ public class Timer extends Activity  implements TextToSpeech.OnInitListener {
 
         // make sure the fields are not empty
         myGPS.closeGPS();
-        destroy();
         kill_activity();
         // call the sms manager
         PendingIntent pi = PendingIntent.getActivity(this, 0,
@@ -145,14 +143,21 @@ public class Timer extends Activity  implements TextToSpeech.OnInitListener {
         // this is the function that does all the magic
         sms.sendTextMessage(phoneNumber, null, msg.toString(), pi, null);
 
+
+
+
+
     }
-
-    public void destroy()
+    @Override
+    public void onDestroy()
     {
-
+// Don’t forget to shutdown!
+        if (mTts != null)
+        {
             mTts.stop();
             mTts.shutdown();
-
+        }
+        super.onDestroy();
     }
 
     void kill_activity()

@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="25dp"
+
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     android:background="#14b4ff">
 
-
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:minHeight="255dp"
+        android:nestedScrollingEnabled="false">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Emergency Contact Number"
         android:layout_gravity="center_horizontal"
         android:textColor="#c4fdfff8"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -42,17 +50,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="256dp" />
 
-    <Button
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:id="@+id/button3"
-        android:background="#cac5c5c5"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
 
-    <EditText
+        <EditText
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:id="@+id/eMessage"
@@ -71,21 +70,23 @@
         android:text="Optional: Custom message"
         android:layout_gravity="center_horizontal"
         android:textColor="#c4fdfff8"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:id="@+id/textView5"
-        android:layout_below="@+id/eContact"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/eTimer"
+        android:layout_alignRight="@+id/textView4"
+        android:layout_alignEnd="@+id/textView4"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Optional: Set Timer"
+        android:text="Set Timer"
         android:layout_gravity="center_horizontal"
         android:textColor="#c4fdfff8"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:id="@+id/textView6"
-        android:layout_below="@+id/eMessage"
+        android:layout_below="@+id/eContact"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -102,5 +103,20 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+        <Button
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:id="@+id/button3"
+            android:background="#cac5c5c5"
+            android:layout_alignTop="@+id/eMessage"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-</RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
+
+
